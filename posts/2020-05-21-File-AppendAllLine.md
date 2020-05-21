@@ -1,3 +1,5 @@
+https://docs.microsoft.com/ko-kr/dotnet/standard/io/how-to-write-text-to-a-file
+
 ```C#
 using System;
 using System.IO;

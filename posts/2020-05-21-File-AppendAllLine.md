@@ -1,4 +1,4 @@
-'''C
+```C#
 using System;
 using System.IO;
 
@@ -27,4 +27,4 @@ class Program
 // And then appends the following contents:
 // New line 1
 // New line 2
-'''
+```

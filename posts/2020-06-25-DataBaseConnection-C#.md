@@ -1,4 +1,5 @@
 출처: https://kinanadel.blogspot.com/2018/10/c-mssql-net.html#comment-form
+
 C#에서 데이터베이스에 연결하고, 쿼리를 실행하는 방법 (Mssql, .net) 
  DB는 MSSQL을 기준
 

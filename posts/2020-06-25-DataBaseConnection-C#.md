@@ -3,12 +3,13 @@
 C#에서 데이터베이스에 연결하고, 쿼리를 실행하는 방법 (Mssql, .net) 
  DB는 MSSQL을 기준
 
-```C
+```C#
 string connectionstringName = WebConfigurationManager.ConnectionStrings["TestDB"].ConnectionString;
+//connectionString="Data Source=SHDEVDB;Initial Catalog=ECMDB;User Id=sa;Password=P@ssw0rd;" providerName="System.Data.SqlClient"
 ```
 
 1. 파라미터가 없는 일반 조회 쿼리
-```C
+```C#
 //조회 결과 데이터셋
 DataSet ds = new DataSet();
 
@@ -35,12 +36,12 @@ catch (Exception ex)
  
 
 조회 결과를 사용할땐
-```C
+```C#
 ds.Tables[0].Rows[i][j].ToString().Trim();
  ```
  
 2. 추가, 삭제 쿼리 실행하는 방법
-```C
+```C#
 //쿼리 파라미터가 2개 들어가는 INSERT 쿼리
 string srQuery = "INSERT INTO TABLE (COLSUMN1 ,COLUMN2) VALUES (@param1 ,@param2);";
 
@@ -59,7 +60,7 @@ string srQuery = "INSERT INTO TABLE (COLSUMN1 ,COLUMN2) VALUES (@param1 ,@param2
 
 3. 파라미터가 있는 조회 쿼리
 
-```C
+```C#
 //조회 결과 데이터셋
 DataSet ds = new DataSet();
 

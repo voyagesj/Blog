@@ -1,8 +1,9 @@
+출처: https://kinanadel.blogspot.com/2018/10/c-mssql-net.html#comment-form
 C#에서 데이터베이스에 연결하고, 쿼리를 실행하는 방법 (Mssql, .net) 
  DB는 MSSQL을 기준
 
 1. DB 연동
-```
+```C
 using System.Data.SqlClient;
 //DB connection
 SqlConnection sqlConnection = null;
@@ -35,9 +36,9 @@ sqlConnection = connSql();
 
 
 2. 파라미터가 없는 일반 조회 쿼리
-```
+```C
 //조회 결과 데이터셋
-DataSet Lds = new DataSet();
+DataSet ds = new DataSet();
 
 //쿼리
 string srQuery = "SELECT * FROM TABLE;";
@@ -49,10 +50,10 @@ SqlConnection sqlConnection = connSql();
 try
 {
    SqlConnection sqlConnection = connSql();
-   SqlDataAdapter Ldap = new SqlDataAdapter(srQuery, sqlConnection);
+   SqlDataAdapter adapter = new SqlDataAdapter(srQuery, sqlConnection);
 
    //조회결과 저장
-   Ldap.Fill(Lds);
+   adapter.Fill(ds);
 }
 catch (Exception exe)
 {
@@ -62,21 +63,21 @@ catch (Exception exe)
  
 
 조회 결과를 사용할땐
-```
-Lds.Tables[0].Rows[i][j].ToString().Trim();
+```C
+ds.Tables[0].Rows[i][j].ToString().Trim();
  ```
  
 2. 추가, 삭제 쿼리 실행하는 방법
-```
+```C
 //쿼리 파라미터가 2개 들어가는 INSERT 쿼리
-string srQuery = "INSERT INTO TABLE (COLSUMN1 ,COLUMN2) VALUES (@p1 ,@p2);";
+string srQuery = "INSERT INTO TABLE (COLSUMN1 ,COLUMN2) VALUES (@param1 ,@param2);";
 //DB 연결
 SqlConnection sqlConnection = connSql();
 //저장 요청
    SqlConnection sqlConnection = connSql();
    SqlCommand commS = new SqlCommand(srQuery, sqlConnection);
-   commS.Parameters.AddWithValue("@p1", "변수1");
-   commS.Parameters.AddWithValue("@p2", "변수2");
+   commS.Parameters.AddWithValue("@param1", "변수1");
+   commS.Parameters.AddWithValue("@param2", "변수2");
 
    //쿼리 실행
    commS.ExecuteNonQuery();
@@ -86,12 +87,12 @@ SqlConnection sqlConnection = connSql();
 
 3. 파라미터가 있는 조회 쿼리
 
-``` 
+```C
 //조회 결과 데이터셋
-DataSet Lds = new DataSet();
+DataSet ds = new DataSet();
 
 //쿼리 파라미터가 2개 들어가는 SELECT 쿼리
-string srQuery = "SELECT * FROM TABLE WHERE COLUMN1 = @P1 AND COLUMN2 = @P2;";
+string srQuery = "SELECT * FROM TABLE WHERE COLUMN1 = @param1 AND COLUMN2 = @param2;";
 
 //DB 연결
 SqlConnection sqlConnection = connSql();
@@ -100,11 +101,11 @@ SqlConnection sqlConnection = connSql();
 try
 {
    SqlConnection sqlConnection = connSql();
-   SqlDataAdapter Ldap = new SqlDataAdapter(srQuery, sqlConnection);
-   Ldap.SelectCommand.Parameters.Add(new SqlParameter("@P1", "변수1"));
-   Ldap.SelectCommand.Parameters.Add(new SqlParameter("@P2", "변수2"));
+   SqlDataAdapter adapter = new SqlDataAdapter(srQuery, sqlConnection);
+   adapter.SelectCommand.Parameters.Add(new SqlParameter("@param1", "변수1"));
+   adapter.SelectCommand.Parameters.Add(new SqlParameter("@param2", "변수2"));
    //조회결과 저장
-   Ldap.Fill(Lds);
+   adapter.Fill(ds);
 }
 catch (Exception exe)
 {

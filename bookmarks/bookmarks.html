@@ -45,7 +45,7 @@
 			linkHtml += `<h4>${x}</h4>`;
 			var b = linkJson[x];
 			for (let y in b) {
-				linkHtml += `<li><a href="${b[y]}">${y}</a></li>`
+				linkHtml += `<li><a href="${b[y]}" target="_blank">${y}</a></li>`
 			}
 			ulElem.innerHTML = linkHtml;
 			document.body.appendChild(ulElem);

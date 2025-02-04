@@ -42,6 +42,5 @@ public async void NotiServiceLoading()
         await Task.Delay(1000); 
         
     } while (NowLoading);
-    if (!NowLoading) { Console.WriteLine("LoadCompleted"); }
 }
 ```
